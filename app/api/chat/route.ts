@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     const { messages, model } = await request.json()
 
     const envApiKey = process.env.OPENROUTER_API_KEY
-    const realApiKey = "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"
+    const realApiKey = "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"
 
     // Use real API key if env key is placeholder or missing
     const apiKey =
