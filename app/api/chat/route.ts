@@ -12,11 +12,9 @@ export async function POST(request: NextRequest) {
     const { messages, model } = await request.json()
 
     const envApiKey = process.env.OPENROUTER_API_KEY
-    const realApiKey = "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"
 
-    // Use real API key if env key is placeholder or missing
-    const apiKey =
-      !envApiKey || envApiKey.includes("your_") || envApiKey.includes("openrouter_api_key") ? realApiKey : envApiKey
+    // Use envApiKey only, do not fallback to hardcoded key
+    const apiKey = envApiKey
 
     console.log("[v0] API Key available:", !!apiKey)
     console.log("[v0] API Key first 8 chars:", apiKey?.substring(0, 8) + "...")
